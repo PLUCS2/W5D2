@@ -1,0 +1,24 @@
+<p>
+  <%= @comment.content %>
+  <br>
+  by: <%= @comment.author.username %>
+</p>
+
+<a href="<%= post_url(@comment.post_id) %>">OG Post</a>
+<a href="<%= edit_comment_url(@comment) %>">Edit ME!</a>
+
+
+<h3>Replies</h3>
+
+<form action="<%= new_post_comment_url(@comment.post_id) %>">
+  <input type="hidden" name="parent_comment_id" value='<%= @comment.id %>'>
+  <button type="submit">Add Reply</button>
+</form>
+<p>
+  <% @comment.comments.each do |babies| %>
+    <%= babies.content %>
+    by: <%= babies.author.username %>
+   <a href="<%= edit_comment_url(babies) %>">Edit ME!</a>
+    <br>
+    <% end %>
+</p>

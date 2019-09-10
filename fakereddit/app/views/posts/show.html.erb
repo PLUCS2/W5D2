@@ -1,0 +1,16 @@
+
+<a href="<%= edit_post_url(@post) %>">Edit Post</a>
+<br>
+<a href="<%= subs_url %>">All Subs!</a>
+<p>
+  <%= @post.title %>
+  <%= @post.url %>
+  <%= @post.content %>
+  <p>- <%= @post.author.username %></p>
+</p>
+
+<% @post.comments.each do |comment| %>
+  <a href="<%= comment_url(comment) %>"><p><%= comment.content if comment.parent_comment_id.nil? %></p></a>
+<% end %>
+
+<a href="<%= new_post_comment_url(@post.id) %>">New Comment</a>

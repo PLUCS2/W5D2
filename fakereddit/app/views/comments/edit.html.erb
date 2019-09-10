@@ -1,0 +1,16 @@
+<h2>Edit Comment</h2>
+
+<a href="<%= post_url(@comment.post_id) %>">POST</a>
+
+<form action="<%= comment_url(@comment) %>" method='POST'>
+  <input type="hidden" name="_method" value='PATCH'>
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+
+  <label>
+    Comment
+    <input type="text" name="comment[content]" value='<%= @comment.content %>'>
+  </label>
+
+  <button type="submit">Submit Changes</button>
+
+</form>
